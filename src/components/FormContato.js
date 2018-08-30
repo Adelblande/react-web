@@ -8,15 +8,21 @@ class FormContato extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nome: '',
-      email: '',
-      telefone: ''
+      contato :{
+        id: '00025',
+        nome: 'Euvezio',
+        email: 'euvezio@hotmail.com',
+        telefone: '1123232323'
+      }
+
     }
+    this.addNovoContato = this.addNovoContato.bind(this)
   }
 
   addNovoContato() {
-    this.props.addContatos(this.state);
+    this.props.addContatos(this.state.contato);
     this.setState({
+      id: '',
       nome: '',
       email: '',
       telefone: ''
@@ -28,12 +34,12 @@ class FormContato extends Component {
       <div>
         <br /><br />
         <form>
-          <input type="text" value={this.state.nome} onChange={(e) => this.setState({nome: e.target.value})} placeholder="Nome"/>
-          <input type="text" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="E-mail"/>
-          <input type="text" value={this.state.telefone} onChange={(e) => this.setState({telefone: e.target.value})} placeholder="Telefone"/>
+          <input type="text" value={this.state.contato.nome} onChange={(e) => this.setState({nome: e.target.value})} placeholder="Nome"/>
+          <input type="text" value={this.state.contato.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="E-mail"/>
+          <input type="text" value={this.state.contato.telefone} onChange={(e) => this.setState({telefone: e.target.value})} placeholder="Telefone"/>
         </form>
         <br />
-        <button onClick={this.addNovoContato.bind(this)}>Add Contato</button>  
+        <button onClick={this.addNovoContato}>Add Contato</button>  
         <br /><br />
       </div>
     );
