@@ -15,7 +15,7 @@ class FormContato extends Component {
   }
 
   addNovoContato() {
-    this.props.addContato(this.state);
+    this.props.addContatos(this.state);
     this.setState({
       nome: '',
       email: '',
@@ -33,14 +33,16 @@ class FormContato extends Component {
           <input type="text" value={this.state.telefone} onChange={(e) => this.setState({telefone: e.target.value})} placeholder="Telefone"/>
         </form>
         <br />
-        <button onClick={this.addNovoContato}>Add Contato</button>  
+        <button onClick={this.addNovoContato.bind(this)}>Add Contato</button>  
         <br /><br />
       </div>
     );
   }
 }
-
+const mapStateToProps = state => ({
+  contatos: state.contatos
+})
 const mapDispatchToProps = dispatch => bindActionCreators(contatosActions, dispatch);
 
 
-export default connect(null, mapDispatchToProps)(FormContato)
+export default connect(mapStateToProps, mapDispatchToProps)(FormContato)

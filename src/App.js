@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as contatosActions from './actions/contatosAction';
 
 import FormContato from './components/FormContato';
+import TotalContatos from './components/TotalContatos';
 import logo from './logo.svg';
 import './App.css';
 
@@ -20,11 +21,12 @@ class App extends Component {
         </header>
         {
           this.props.contatos.map(contato => (
-            <li key={contato.id}>{contato.nome}</li>
+            <li key={contato.email}>{contato.nome}</li>
           ))
         }
 
         <FormContato />
+        <TotalContatos />
       </div>
     );
   }
