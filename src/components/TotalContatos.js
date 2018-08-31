@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const TotalContatos = (props) => {
   return (
     <div>
-      <h3>Vc tem { props.contatos.length } contato(s)</h3>
+      <h3>Total de contatos:  { props.contatos.length } </h3>
     </div>
   )
 }

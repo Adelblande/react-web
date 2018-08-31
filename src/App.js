@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 import * as contatosActions from './actions/contatosAction';
 
@@ -11,7 +13,23 @@ import './App.css';
 
 
 class App extends Component {
-  
+  componentWillMount() {
+    var config = {
+      apiKey: "AIzaSyBko3o3XPN9sDa0cx11Uhy9IolQnCPNUzM",
+      authDomain: "react-f88be.firebaseapp.com",
+      databaseURL: "https://react-f88be.firebaseio.com",
+      projectId: "react-f88be",
+      storageBucket: "react-f88be.appspot.com",
+      messagingSenderId: "213271732398"
+    };
+    firebase.initializeApp(config);
+    this.mostraContatos();
+  }
+
+  mostraContatos() {
+    this.props.carregaContatos();
+  }
+
   render() {
     return (
       <div className="App">
@@ -22,7 +40,7 @@ class App extends Component {
         <ul>
         {
           this.props.contatos.map(contato => (
-            <li key={contato.id}>{contato.nome} | {contato.email} | {contato.telefone} </li>
+            <li key={contato.email}>{contato.nome} | {contato.email} | {contato.telefone} </li>
           ))
         }
         </ul>
