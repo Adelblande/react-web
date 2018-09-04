@@ -12,12 +12,7 @@ import TotalContatos from './components/TotalContatos';
 class App extends Component {
   componentWillMount() {
     var config = {
-      apiKey: "AIzaSyBko3o3XPN9sDa0cx11Uhy9IolQnCPNUzM",
-      authDomain: "react-f88be.firebaseapp.com",
-      databaseURL: "https://react-f88be.firebaseio.com",
-      projectId: "react-f88be",
-      storageBucket: "react-f88be.appspot.com",
-      messagingSenderId: "213271732398"
+      
     };
     firebase.initializeApp(config);
     this.mostraContatos();
