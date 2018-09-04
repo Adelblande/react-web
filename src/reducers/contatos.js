@@ -4,7 +4,7 @@ export default function contatos(state = [], action) {
       return [...state, action.contato]
 
     case 'CARREGA_CONTATOS':
-      return [...state, action.contatos]
+      return [...state, ...action.contatos]
     
     default:
       return state;

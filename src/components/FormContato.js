@@ -8,7 +8,6 @@ class FormContato extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
       nome: '',
       email: '',
       telefone: ''
@@ -19,7 +18,6 @@ class FormContato extends Component {
   addNovoContato() {
     this.props.addContatos(this.state);
     this.setState({
-      id: '',
       nome: '',
       email: '',
       telefone: ''
