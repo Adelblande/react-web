@@ -8,6 +8,8 @@ import * as contatosActions from './actions/contatosAction';
 
 import FormContato from './components/FormContato';
 import TotalContatos from './components/TotalContatos';
+import ListaContatos from './components/ListaContatos';
+import Cabecalho from './components/Cabecalho';
 
 class App extends Component {
   componentWillMount() {
@@ -15,52 +17,19 @@ class App extends Component {
       
     };
     firebase.initializeApp(config);
-    this.mostraContatos();
+    this._carregaContatos();
   }
 
-  mostraContatos() {
+  _carregaContatos() {
     this.props.carregaContatos();
   }
-
+  
   render() {
     return (
       <div className="container">
-        <section className="hero is-dark">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title">
-                Contatos
-              </h1>
-            </div>
-          </div>
-        </section>
+        <Cabecalho />
         <FormContato />
-        <table className="table is-fullwidth">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>E-mail</th>
-              <th>Telefone</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.props.contatos.map(contato => (
-                <tr key={contato.id}>
-                  <td>{contato.nome}</td>
-                  <td>{contato.email}</td>
-                  <td>{contato.telefone}</td>
-                  <td>
-                    <button className="button is-success is-outlined is-small" onClick={() => {}}>Alterar</button>
-                    <button className="button is-danger is-outlined is-small" onClick={() => {}}>Excluir</button>
-                  </td>
-                </tr>  
-              ))
-            }
-          </tbody>
-        </table>
-        
+        <ListaContatos />
         <TotalContatos />
       </div>
     );

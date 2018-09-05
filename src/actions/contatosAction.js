@@ -25,3 +25,12 @@ export function carregaContatos() {
     })
   }
 }
+
+export function excluirContato(id) {
+  return dispatch => {
+    firebase.database().ref('contatos').child(id).remove();
+    dispatch({
+      type: 'EXCLUIR_CONTATO'
+    })
+  }
+}

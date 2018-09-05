@@ -1,0 +1,4 @@
+[0904/102505.633:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[0904/102505.836:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[0904/102505.836:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0904/102505.836:ERROR:exception_snapshot_win.cc(88)] thread ID 2132 not found in process

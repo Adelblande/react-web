@@ -12,10 +12,10 @@ class FormContato extends Component {
       email: '',
       telefone: ''
     }
-    this.addNovoContato = this.addNovoContato.bind(this)
+    this._addContatos = this._addContatos.bind(this)
   }
 
-  addNovoContato() {
+  _addContatos() {
     this.props.addContatos(this.state);
     this.setState({
       nome: '',
@@ -44,7 +44,7 @@ class FormContato extends Component {
           </div>
         </div>
         <br />
-        <button className="button is-info is-outlined" onClick={this.addNovoContato}>Add Contato</button>  
+        <button className="button is-info is-outlined" onClick={this._addContatos}>Add Contato</button>  
         <br /><br />
       </div>
     );
