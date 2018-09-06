@@ -10,10 +10,13 @@ class ListaContatos extends Component {
     this._excluirContato = this._excluirContato.bind(this);
   }
 
-  _excluirContato(id) {
-    this.props.excluirContato(id);
+  _excluirContato(contato) {
+    this.props.excluirContato(contato);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.contatos);
+  }
 
   render() {
     return (
@@ -35,7 +38,7 @@ class ListaContatos extends Component {
                 <td>{contato.telefone}</td>
                 <td>
                   <button className="button is-success is-outlined is-small" onClick={() => {}}>Alterar</button>
-                  <button className="button is-danger is-outlined is-small" onClick={() => this._excluirContato(contato.id)}>Excluir</button>
+                  <button className="button is-danger is-outlined is-small" onClick={() => this._excluirContato(contato)}>Excluir</button>
                 </td>
               </tr>  
             ))

@@ -13,10 +13,10 @@ export function addContatos(contato) {
 
 export function carregaContatos() {
   return dispatch => {
-    const arrayContatos = [];
     firebase.database().ref('contatos').on('value', snap => {
+      const arrayContatos = [];
       snap.forEach((item) => {
-        arrayContatos.push({id: item.key, nome: item.val().nome, email: item.val().email, telefone: item.val().telefone})
+        arrayContatos.push({id: item.key, ...item.val()});
       })
       dispatch({
         type: 'CARREGA_CONTATOS',
@@ -26,11 +26,12 @@ export function carregaContatos() {
   }
 }
 
-export function excluirContato(id) {
+export function excluirContato(contato) {
   return dispatch => {
-    firebase.database().ref('contatos').child(id).remove();
+    firebase.database().ref('contatos').child(contato.id).remove();
     dispatch({
-      type: 'EXCLUIR_CONTATO'
+      type: 'EXCLUIR_CONTATO',
+      contato
     })
   }
 }

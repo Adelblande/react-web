@@ -27,7 +27,7 @@ class FormContato extends Component {
   render(){
     return (
       <div>
-        <br /><br />
+        <br />
         <div className="field">
           <div className="control">
             <input className="input is-info" type="text" value={this.state.nome} onChange={(e) => this.setState({nome: e.target.value})} placeholder="Nome" />
@@ -43,7 +43,6 @@ class FormContato extends Component {
             <input className="input is-info" type="text" value={this.state.telefone} onChange={(e) => this.setState({telefone: e.target.value})} placeholder="Telefone" />
           </div>
         </div>
-        <br />
         <button className="button is-info is-outlined" onClick={this._addContatos}>Add Contato</button>  
         <br /><br />
       </div>

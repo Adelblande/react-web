@@ -19,8 +19,8 @@ class App extends Component {
     firebase.initializeApp(config);
     this._carregaContatos();
   }
-
-  _carregaContatos() {
+  
+    _carregaContatos() {
     this.props.carregaContatos();
   }
   
