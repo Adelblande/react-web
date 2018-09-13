@@ -9,6 +9,9 @@ export default function contatos(state = [], action) {
     case 'EXCLUIR_CONTATO':
       return [...state]
       
+    case 'ALTERAR_CONTATO':
+      return [...state]
+      
     default:
       return state;
   }

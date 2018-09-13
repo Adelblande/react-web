@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import * as contatosActions from './../actions/contatosAction';
 
+
 class ListaContatos extends Component {
   constructor(props){
     super(props)
@@ -12,6 +13,10 @@ class ListaContatos extends Component {
 
   _excluirContato(contato) {
     this.props.excluirContato(contato);
+  }
+
+  _alterarContato(contato) {
+    
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,7 +42,7 @@ class ListaContatos extends Component {
                 <td>{contato.email}</td>
                 <td>{contato.telefone}</td>
                 <td>
-                  <button className="button is-success is-outlined is-small" onClick={() => {}}>Alterar</button>
+                  <button className="button is-success is-outlined is-small" onClick={() => this._alterarContato(contato)}>Alterar</button>
                   <button className="button is-danger is-outlined is-small" onClick={() => this._excluirContato(contato)}>Excluir</button>
                 </td>
               </tr>  
@@ -45,7 +50,7 @@ class ListaContatos extends Component {
           }
         </tbody>
       </table>
-  
+
     )
   }
 }

@@ -35,3 +35,13 @@ export function excluirContato(contato) {
     })
   }
 }
+
+export function alterarContato(contato) {
+  return dispatch => {
+    firebase.database().ref('contatos').child(contato.id).set(contato);
+    dispatch({
+      type: 'ALTERAR_CONTATO',
+      contato
+    })
+  }
+}
