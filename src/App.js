@@ -16,12 +16,7 @@ import Routes from './routes';
 class App extends Component {
   componentWillMount() {
     var config = {
-      apiKey: "AIzaSyBK7-FLFSQjG7S6R8Ca_5HmTsQjITD2hbA",
-      authDomain: "opapotabom-c242e.firebaseapp.com",
-      databaseURL: "https://opapotabom-c242e.firebaseio.com",
-      projectId: "opapotabom-c242e",
-      storageBucket: "opapotabom-c242e.appspot.com",
-      messagingSenderId: "933024173556"
+      
     };
     firebase.initializeApp(config);
     this._carregaContatos();
