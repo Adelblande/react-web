@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import { push } from 'connected-react-router';
+
 
 export const modificaNome = (novoNome) => {
   return {
@@ -24,19 +26,24 @@ export const modificaSenha = (novaSenha) => {
 export const cadastraUsuario = ({nome, email, senha}) => {
   return dispatch => {
     firebase.auth().createUserWithEmailAndPassword(email, senha)
-      .then((user) => console.log(user))
-      .catch((erro) => console.log(erro));
+      .then((user) => cadastraUsuarioSucesso(dispatch))
+      .catch((erro) => cadastraUsuarioErro(erro, dispatch));
   }
 }
 
-// export const fazLogin = (user) => {
-//   return dispatch => {
-//     firebase.auth().signInWithEmailAndPassword(user.email, user.senha).then((login) => {
-//       dispatch({
-//         type: 'LOGAR',
-//         user: login.user.uid
-//       })
-      
-//     })
-//   } 
-// }
+export const fazLogin = ({email, senha}) => {
+  return dispatch => {
+    firebase.auth().signInWithEmailAndPassword(email, senha)
+      .then((login) => console.log(login))
+      .catch((erro) => console.log(erro));
+  } 
+}
+
+const cadastraUsuarioSucesso = (dispatch) => {
+  dispatch({type: 'CADASTRA_USUARIO_SUCESSO', payload: 'Cadastro efetuado com sucesso.'})
+  dispatch(push('/'))
+}
+
+const cadastraUsuarioErro = (erro, dispatch) => {
+  dispatch({type: 'CADASTRA_USUARIO_ERRO', payload: erro.message})
+}

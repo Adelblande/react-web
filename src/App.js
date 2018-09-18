@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import firebase from 'firebase/app';
 import 'firebase/database';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 
 import * as contatosActions from './actions/contatosAction';
 
@@ -11,13 +11,17 @@ import * as contatosActions from './actions/contatosAction';
 // import TotalContatos from './components/TotalContatos';
 // import ListaContatos from './components/ListaContatos';
 // import Cabecalho from './components/Cabecalho';
-import FormLogin from './components/FormLogin';
-import FormCadastro from './components/FormCadastro';
+import Routes from './routes';
 
 class App extends Component {
   componentWillMount() {
     var config = {
-      
+      apiKey: "AIzaSyBK7-FLFSQjG7S6R8Ca_5HmTsQjITD2hbA",
+      authDomain: "opapotabom-c242e.firebaseapp.com",
+      databaseURL: "https://opapotabom-c242e.firebaseio.com",
+      projectId: "opapotabom-c242e",
+      storageBucket: "opapotabom-c242e.appspot.com",
+      messagingSenderId: "933024173556"
     };
     firebase.initializeApp(config);
     this._carregaContatos();
@@ -29,12 +33,7 @@ class App extends Component {
   
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact={true} component={FormLogin} />
-          <Route path="/cadastro" component={FormCadastro} />
-        </Switch>
-      </BrowserRouter>
+      <Routes />
     );
   }
 }

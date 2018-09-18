@@ -5,9 +5,15 @@ import { bindActionCreators } from 'redux';
 import * as LoginActions from './../actions/LoginActions';
 
 class FormCadastro extends Component {
+  _cadastraUsuario() {
+    const { nome, email, senha } = this.props;
+    this.props.cadastraUsuario({ nome, email, senha });
+  }
   render() {
     return (
       <div className="columns is-centered">
+        <br /><br /><br />
+        <div>{this.props.msgCadastro}</div>
         <div className="column is-two-fifths">
           <form>
             <div className="field">
@@ -27,7 +33,7 @@ class FormCadastro extends Component {
             </div>
             <div className="field">
               <div className="control">
-              <button type="button" className="button is-info is-outlined" onClick={() => {}}>Cadastrar</button>
+              <button type="button" className="button is-info is-outlined" onClick={() => this._cadastraUsuario()}>Cadastrar</button>
               </div>
             </div>
           </form>
@@ -41,7 +47,8 @@ class FormCadastro extends Component {
 const mapStateToProps = state => ({
   nome: state.LoginReducer.nome,
   email: state.LoginReducer.email,
-  senha: state.LoginReducer.senha
+  senha: state.LoginReducer.senha,
+  msgCadastro: state.LoginReducer.msgCadastro
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch);
