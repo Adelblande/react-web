@@ -6,40 +6,52 @@ import { Link } from 'react-router-dom';
 import * as LoginActions from './../actions/LoginActions';
 
 class FormLogin extends Component {
-  _fazLogin() {
+  _autenticaUsuario() {
     const { email, senha } = this.props;
-    this.props.fazLogin({email, senha})
+    this.props.autenticaUsuario({email, senha})
   }
   render() {
     return (
-      <div className="columns is-centered">
-        <br /><br /><br />
-        <div>{this.props.msgCadastro}</div>
-        <div className="column is-two-fifths">
-          <form>
-            <div className="field">
-              <div className="control">
-                <input className="input is-info" type="text" value={this.props.email} onChange={(e) => this.props.modificaEmail(e.target.value)} placeholder="E-mail" />
+      <section className="section">
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-two-fifths">
+              <div className="field">
+                <div className="control">
+                  <h1 className="title">Login</h1>
+                  <div>{this.props.msgCadastro}</div>
+                </div>  
               </div>
+            </div>    
+          </div>
+          <div className="columns is-centered">
+            <div className="column is-two-fifths">
+              <form>
+                <div className="field">
+                  <div className="control">
+                    <input className="input is-info" type="text" value={this.props.email} onChange={(e) => this.props.modificaEmail(e.target.value)} placeholder="E-mail" />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <input className="input is-info" type="password" value={this.props.senha} onChange={(e) => this.props.modificaSenha(e.target.value)} placeholder="Senha" />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    Ainda não tem cadastro? <Link to="/cadastro">Cadastre-se</Link>
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                  <button type="button" className="button is-info is-outlined" onClick={() => this._autenticaUsuario()}>Login</button>
+                  </div>
+                </div>
+              </form>
             </div>
-            <div className="field">
-              <div className="control">
-                <input className="input is-info" type="password" value={this.props.senha} onChange={(e) => this.props.modificaSenha(e.target.value)} placeholder="Senha" />
-              </div>
-            </div>
-            <div className="field">
-              <div className="control">
-                Ainda não tem cadastro? <Link to="/cadastro">Cadastre-se</Link>
-              </div>
-            </div>
-            <div className="field">
-              <div className="control">
-              <button type="button" className="button is-info is-outlined" onClick={() => this._fazLogin()}>Login</button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
+      </section>
     )
   }
   

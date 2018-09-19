@@ -4,6 +4,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import FormLogin from '../components/FormLogin';
 import FormCadastro from '../components/FormCadastro';
+import Principal from '../components/Principal';
 import history from './history';
 
 const Routes = () => (
@@ -11,6 +12,7 @@ const Routes = () => (
     <Switch>
       <Route path="/" exact={true} component={FormLogin} />
       <Route path="/cadastro" component={FormCadastro} />
+      <Route path="/principal" component={Principal} />
     </Switch>
   </ConnectedRouter>
 );

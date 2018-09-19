@@ -12,9 +12,15 @@ export default (state = INITIAL_STATE, action) => {
       return {...state, senha: action.payload}
 
     case 'CADASTRA_USUARIO_SUCESSO':
-      return {...state, msgCadastro: action.payload}
+      return {...state, msgCadastro: action.payload, senha: ''}
       
     case 'CADASTRA_USUARIO_ERRO':
+      return {...state, msgCadastro: action.payload}
+      
+    case 'AUTENTICA_USUARIO_SUCESSO':
+      return {...state, msgCadastro: ''}
+      
+    case 'AUTENTICA_USUARIO_ERRO':
       return {...state, msgCadastro: action.payload}
       
     default:
